@@ -26,5 +26,30 @@ void BubbleSort(T *pArray, int n)
     }
 }
 
+template <class T>
+void QuickSort(T *pArray, int nStart, int nEnd)
+{
+	int i = nStart;
+	int j = nEnd;
+
+	T tmp;
+	if (nStart<nEnd)
+	{
+		tmp = pArray[nStart];
+		while (i!=j)
+		{
+			while(i<j && pArray[j]>=tmp)
+				j--;
+			pArray[i] = pArray[j];
+			while(i<j && pArray[i]<=tmp)
+				i++;
+			pArray[j] = pArray[i];
+		}
+		pArray[i] = tmp;
+		QuickSort(pArray, nStart, i-1);
+		QuickSort(pArray, t+1, nEnd);
+	}	
+}
+
 
 #endif /* Sort_h */
